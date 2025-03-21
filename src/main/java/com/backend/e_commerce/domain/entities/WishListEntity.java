@@ -29,14 +29,14 @@ public class WishListEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long wishlistId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user; // Giả sử WishList cũng liên kết với người dùng
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private ProductEntity product;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "DATETIME(6)")
     private LocalDateTime createAt;
 }

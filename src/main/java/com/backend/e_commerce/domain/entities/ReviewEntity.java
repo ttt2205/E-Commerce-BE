@@ -29,11 +29,11 @@ public class ReviewEntity {
     private Long reviewId;
 
     // Quan hệ ManyToOne với ProductEntity (mỗi Review chỉ thuộc về một Product)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private ProductEntity product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
@@ -43,6 +43,6 @@ public class ReviewEntity {
     @Column(name = "comment")
     private String comment;
 
-    @Column(name = "create_at", updatable = false, insertable = false)
+    @Column(name = "create_at", updatable = false, columnDefinition = "DATETIME(6)")
     private LocalDateTime createAt;
 }

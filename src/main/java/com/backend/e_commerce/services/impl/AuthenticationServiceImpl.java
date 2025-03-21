@@ -1,7 +1,6 @@
 package com.backend.e_commerce.services.impl;
 
 import java.security.Key;
-import java.security.Signature;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +15,10 @@ import org.springframework.stereotype.Service;
 import com.backend.e_commerce.services.AuthenticationService;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
@@ -60,8 +62,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public UserDetails validateToken(String token) {
-        String username = extractUsername(token);
-        return userDetailsService.loadUserByUsername(username);
+        try {
+            String username = extractUsername(token);
+            if (username == null) {
+                throw new MalformedJwtException("Token doesn't contain subject");
+            }
+            return userDetailsService.loadUserByUsername(username);
+        } catch (ExpiredJwtException ex) {
+            throw ex;
+        } catch (JwtException ex) {
+            throw ex;
+        }
     }
 
     private String extractUsername(String token) {
@@ -70,6 +81,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+
         return claims.getSubject();
     }
 

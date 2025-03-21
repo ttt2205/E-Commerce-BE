@@ -10,4 +10,6 @@ import com.backend.e_commerce.domain.entities.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity> findByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

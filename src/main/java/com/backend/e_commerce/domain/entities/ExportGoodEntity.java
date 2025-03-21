@@ -28,7 +28,7 @@ public class ExportGoodEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private ProductEntity product;
 
@@ -44,7 +44,7 @@ public class ExportGoodEntity {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "import_date")
+    @Column(name = "import_date", columnDefinition = "DATETIME(6)")
     @UpdateTimestamp
     private LocalDateTime exportDate;
 }

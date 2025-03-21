@@ -32,7 +32,7 @@ public class ShippingEntity {
     private Long shippingId;
 
     // Quan hệ ManyToOne với OrderEntity (mỗi Shipping chỉ thuộc về một Order)
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", nullable = false)
     private OrderEntity order;
 

@@ -47,10 +47,10 @@ public class PromotionEntity {
     @Column(name = "discount_value")
     private BigDecimal discountValue;
 
-    @Column(name = "start_date")
+    @Column(name = "start_date", columnDefinition = "DATETIME(6)")
     private LocalDateTime startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date", columnDefinition = "DATETIME(6)")
     private LocalDateTime endDate;
 
     @ManyToMany(mappedBy = "productPromotions")

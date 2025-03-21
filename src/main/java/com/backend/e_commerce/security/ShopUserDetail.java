@@ -1,7 +1,7 @@
 package com.backend.e_commerce.security;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +20,9 @@ public class ShopUserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return user.getUserRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRoleName())) // Chuyển thành GrantedAuthority
+                .collect(Collectors.toList()); // Trả về List thay vì Set
     }
 
     @Override

@@ -31,14 +31,17 @@ public class UserProfileEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long profileId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "date_of_birth")
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "date_of_birth", columnDefinition = "DATETIME(6)")
     private LocalDateTime dateOfBirth;
 
     @Column(name = "gender")

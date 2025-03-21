@@ -95,7 +95,7 @@ public class Initializer implements CommandLineRunner {
                 "/api/v1/dashboard",
                 "api/v1/products",
                 "/api/v1/orders",
-                "/api/v1/orderDetails/",
+                "/api/v1/orderDetails",
                 "/api/v1/roles",
                 "/api/v1/shipping",
                 "/api/v1/users",
