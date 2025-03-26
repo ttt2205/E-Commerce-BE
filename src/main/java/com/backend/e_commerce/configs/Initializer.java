@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.management.relation.Role;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -92,17 +90,17 @@ public class Initializer implements CommandLineRunner {
 
         // Danh sách các API
         List<String> paths = List.of(
-                "/api/v1/dashboard",
-                "api/v1/products",
-                "/api/v1/orders",
-                "/api/v1/orderDetails",
-                "/api/v1/roles",
-                "/api/v1/shipping",
-                "/api/v1/users",
-                "/api/v1/paths",
-                "/api/v1/categories",
-                "/api/v1/promotions",
-                "/api/v1/suppliers");
+                "/api/v1/dashboard/",
+                "/api/v1/products/",
+                "/api/v1/orders/",
+                "/api/v1/order-details/",
+                "/api/v1/roles/",
+                "/api/v1/shipping/",
+                "/api/v1/users/",
+                "/api/v1/paths/",
+                "/api/v1/categories/",
+                "/api/v1/promotions/",
+                "/api/v1/suppliers/");
 
         List<PathEntity> listPaths = paths.stream()
                 .map(url -> pathRepository.findByUrl(url).orElseGet(() -> {

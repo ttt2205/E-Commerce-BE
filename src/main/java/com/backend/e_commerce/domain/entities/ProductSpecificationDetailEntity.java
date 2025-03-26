@@ -1,5 +1,6 @@
 package com.backend.e_commerce.domain.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class ProductSpecificationDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productSpecificationDetailId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "product_specification_mapping_id")
@@ -31,6 +32,9 @@ public class ProductSpecificationDetailEntity {
     @JoinColumn(name = "specification_detail_id")
     private SpecificationDetailEntity specificationDetail;
 
+    @Column(name = "value", nullable = false)
     private String value;
+
+    @Column(name = "is_highlighted", nullable = false)
     private boolean isHighlighted;
 }

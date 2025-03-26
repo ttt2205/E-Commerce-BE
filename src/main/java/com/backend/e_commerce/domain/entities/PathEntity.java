@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class PathEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int pathId;
+    private int id;
 
     @Column(name = "url")
     private String url;

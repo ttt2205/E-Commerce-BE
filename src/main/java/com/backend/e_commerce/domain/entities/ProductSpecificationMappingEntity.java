@@ -11,11 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class ProductSpecificationMappingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productSpecificationMappingId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -39,9 +35,6 @@ public class ProductSpecificationMappingEntity {
 
     @ManyToOne
     @JoinColumn(name = "product_specification_id")
-    private ProductSpecificationEntity specification;
-
-    @OneToMany(mappedBy = "productSpecificationMapping", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ProductSpecificationDetailEntity> specificationDetails;
+    private ProductSpecificationEntity productSpecification;
 
 }
