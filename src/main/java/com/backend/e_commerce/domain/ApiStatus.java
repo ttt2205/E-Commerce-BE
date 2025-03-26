@@ -2,8 +2,11 @@ package com.backend.e_commerce.domain;
 
 public enum ApiStatus {
     SUCCESS,
-    FAIL,
+    BAD_REQUEST,
     NOT_FOUND,
     IS_EXIST,
-    UPDATED
+    UPDATED,
+    UNAUTHORIZED,
+    FORBIDDEN,
+    DELETED
 }

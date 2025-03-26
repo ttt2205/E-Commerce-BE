@@ -3,6 +3,8 @@ package com.backend.e_commerce.domain.dtos;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.backend.e_commerce.domain.ProductStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +22,7 @@ public class ProductRequest {
 
     private String productCode;
 
-    private LocalDateTime createdAt;
+    private BigDecimal price;
 
-    private LocalDateTime updatedAt;
+    private String status = "ACTIVE";
 }

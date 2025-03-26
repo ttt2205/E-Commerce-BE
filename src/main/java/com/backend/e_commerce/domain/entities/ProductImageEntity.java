@@ -1,5 +1,6 @@
 package com.backend.e_commerce.domain.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,12 +22,15 @@ import lombok.NoArgsConstructor;
 public class ProductImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productImageId;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private ProductEntity product;
+    @JoinColumn(name = "product_variant_id")
+    private ProductVariantEntity productVariant;
 
+    @Column(name = "image_url", nullable = false)
     private String imageUrl;
+
+    @Column(name = "is_primary", nullable = false)
     private boolean isPrimary;
 }

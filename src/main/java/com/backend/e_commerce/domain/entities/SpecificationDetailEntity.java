@@ -21,11 +21,11 @@ import lombok.NoArgsConstructor;
 public class SpecificationDetailEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int specificationDetailId;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "product_specification_id")
-    private ProductSpecificationEntity specification;
+    private ProductSpecificationEntity productSpecification;
 
     private String name;
 }

@@ -25,7 +25,7 @@ public class SupplierEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int supplierId;
+    private int id;
 
     @Column(name = "supplier_name")
     private String supplierName;

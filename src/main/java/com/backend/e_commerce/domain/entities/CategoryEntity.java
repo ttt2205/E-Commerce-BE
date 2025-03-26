@@ -25,12 +25,12 @@ public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoryId;
+    private int id;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name", nullable = false, unique = true)
     private String categoryName;
 
-    @Column(name = "parent_id")
+    @Column(name = "parent_id", nullable = true)
     private int parentId;
 
     @ManyToMany(mappedBy = "categories")

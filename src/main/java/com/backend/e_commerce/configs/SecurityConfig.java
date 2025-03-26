@@ -41,21 +41,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/auth/sign-in").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/cart/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/user-profile/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/wish-list/*").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/products/*").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/products").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/products").permitAll()
-                        .requestMatchers(HttpMethod.PATCH, "/api/v1/products/*").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Chỉ admin được truy cập /admin
+                        .requestMatchers(HttpMethod.GET, "/api/v1/categories/*").permitAll()
                         .anyRequest().authenticated())
                 .cors(cors -> cors.configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues()))
                 .csrf(csrf -> csrf.disable()) // ⚠️ Tắt CSRF để API nhận request POST
                 // khong luu token o server
-                // .sessionManagement(session ->
-                // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

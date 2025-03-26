@@ -31,7 +31,7 @@ public class PromotionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long promotionId;
+    private Long id;
 
     @Column(name = "promotion_name")
     private String promotionName;
